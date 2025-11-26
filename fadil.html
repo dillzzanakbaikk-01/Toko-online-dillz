@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Toko Fadil</title>
+    <style>
+        body {
+            font-family: Arial;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .produk {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        #keranjang {
+            background: white;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .total {
+            font-size: 20px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🏪 Dillz ATK</h1>
+    
+    <div class="produk">
+        <h3>✒️ Pulpen - Rp 3.000</h3>
+        <button onclick="tambah('Pulpen', 3000)">Beli</button>
+    </div>
+    
+    <div class="produk">
+        <h3>✏️ Pensil - Rp 2.500</h3>
+        <button onclick="tambah('Pensil', 2500)">Beli</button>
+    </div>
+    
+    <div class="produk">
+        <h3>📓 Buku - Rp 8.000</h3>
+        <button onclick="tambah('Buku', 8000)">Beli</button>
+    </div>
+    
+    <div class="produk">
+        <h3>✂️ Gunting - Rp 15.000</h3>
+        <button onclick="tambah('Gunting', 15000)">Beli</button>
+    </div>
+    
+    <div id="keranjang">
+        <h2>🛒 Keranjang</h2>
+        <div id="list">Belum ada barang</div>
+        <div class="total" id="total">Total: Rp 0</div>
+    </div>
+
+    <script>
+        let barang = [];
+        let total = 0;
+
+        function tambah(nama, harga) {
+            barang.push({nama: nama, harga: harga});
+            total += harga;
+            tampil();
+        }
+
+        function tampil() {
+            let html = '';
+            for(let i = 0; i < barang.length; i++) {
+                html += barang[i].nama + ' - Rp ' + barang[i].harga + '<br>';
+            }
+            document.getElementById('list').innerHTML = html;
+            document.getElementById('total').innerHTML = 'Total: Rp ' + total;
+        }
+    </script>
+</body>
+</html>
